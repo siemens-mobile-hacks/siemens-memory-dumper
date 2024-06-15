@@ -33,6 +33,7 @@ Alternatively, you can [install nodejs on windows](https://nodejs.org/en/downloa
 1. You can achieve maximum speed using a DCA-540 or DCA-510 data cables.
 2. Bluetooth is also possible, but has the worst speed.
 3. It is better to read memory before ArmDebugger is used.
+4. Usually, you don't need to specify PORT, because it is detected automatically (by USB ID).
 
 # USAGE
 ```
