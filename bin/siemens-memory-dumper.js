@@ -49,6 +49,15 @@ program.command('list')
 		await listAvailableMemory(this.optsWithGlobals());
 	});
 
+program.command('list-ports')
+	.description('List available serial ports.')
+	.action(async function () {
+		for (let p of await SerialPort.list()) {
+			if (p.productId != null)
+				console.log(p.path, `${p.vendorId}:${p.productId}`, p.manufacturer);
+		}
+	});
+
 program.showHelpAfterError();
 program.parse();
 

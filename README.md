@@ -57,8 +57,8 @@ Commands:
   read-region <name> [file|dir]  Read memory region by name and save to file.
   read-all [dir]                 Read all available memory regions from phone and save to dir.
   list                           List available memory regions for dump.
+  list-ports                     List available serial ports.
   help [command]                 display help for command
-
 ```
 
 ### List all available memory regions
