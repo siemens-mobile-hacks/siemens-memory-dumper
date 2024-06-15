@@ -1,7 +1,7 @@
 [![NPM Version](https://img.shields.io/npm/v/%40sie-js%2Fsiemens-memory-dumper)](https://www.npmjs.com/package/@sie-js/siemens-memory-dumper)
 
 # SUMMARY
-Console utility for memory dump of Siemens phones.
+Console utility for reading RAM memory inside Siemens phones.
 
 Works on all OS: Linux, OSX, Windows
 
@@ -21,7 +21,11 @@ Works on all OS: Linux, OSX, Windows
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
 3. Install `siemens-memory-dumper`:
 	```bash
+ 	# install
  	npm install -g @sie-js/siemens-memory-dumper
+
+ 	# upgrade if new version is released
+ 	npm update -g @sie-js/siemens-memory-dumper
  	```
 
 	Alternatively, you can use a `siemens-memory-dumper` without installation:
@@ -30,14 +34,12 @@ Works on all OS: Linux, OSX, Windows
 	npx @sie-js/siemens-memory-dumper -p /dev/ttyUSB0 list
 	```
 
-# UPGRADE
-```bash
-npm update -g @sie-js/siemens-memory-dumper
-```
+# TIPS & TRICKS
+1. You can achieve maximum speed using a DCA-540 or DCA-510 data cables.
+2. Bluetooth is also possible, but has the worst speed.
+3. It is better to read memory before ArmDebugger is used.
 
 # USAGE
-> 💡 You can achieve maximum speed using a DCA-540 or DCA-510 data cables. Bluetooth is also possible, but has the worst speed.
-
 ```
 $ siemens-memory-dumper -h
 Usage: memory-dumper [options] [command]
