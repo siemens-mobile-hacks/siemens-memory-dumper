@@ -2,7 +2,7 @@
 	"name": "@sie-js/memory-dumper",
 	"version": "1.0.0",
 	"type": "module",
-	"main": "./bin/memory-dump.js",
+	"main": "./bin/memory-dumper.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"link-local-deps": "npm link -S ../node-sie-serial/",
@@ -11,7 +11,7 @@
 	"author": "",
 	"license": "MIT",
 	"description": "RAM memory dumper using CGSN patch.",
-	"bin": "./bin/memory-dump.js",
+	"bin": "./bin/memory-dumper.js",
 	"repository": {
 		"url": "git+https://github.com/siemens-mobile-hacks/memory-dumper.git"
 	},
