@@ -7,6 +7,9 @@ Works on all OS: Linux, OSX, Windows
 
 # INSTALL
 - Install the latest version of [NodeJS](https://nodejs.org/en/download/).
+	- Windows: `choco install nodejs-lts --version="20.14.0"` (use PowerShell)
+ 	- OSX: `brew install node@20`
+  	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
 - Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
 
 # USAGE
