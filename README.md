@@ -14,9 +14,11 @@ Works on all OS: Linux, OSX, Windows
    		
 		1. Install .msi package with checked `[x] Automatically install the necessary tools`.
 		
-		2. Restart is required after installation.
+		2. Restart/relogin is required after installation.
 
 		3. Install npm: `npm install npm -g` (PowerShell)
+   
+  		5. Allow running .ps scripts: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` (PowerShell)
  	- OSX: `brew install node@20`
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
 3. Install `siemens-memory-dumper`:
