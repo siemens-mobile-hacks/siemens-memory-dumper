@@ -1,5 +1,5 @@
 import fs from 'fs';
-import "chalk";
+import chalk from "chalk";
 import { table as asciiTable } from 'table';
 import { CGSN, serialWaitForOpen } from "@sie-js/serial";
 import cliProgress from "cli-progress";
@@ -19,7 +19,7 @@ export async function readMemoryToFile(argv) {
 
 	let info = await getPhoneInfo(cgsn);
 	if (!info) {
-		console.error(`Can't get phone information!`);
+		showError(`Can't get phone information!`);
 		await cgsnClose(cgsn, port);
 		return;
 	}
@@ -27,7 +27,7 @@ export async function readMemoryToFile(argv) {
 	if (argv.name) {
 		let region = getMemoryRegionByName(info.memoryRegions, argv.name);
 		if (!region) {
-			console.error(`Memory region ${argv.name} not found.`);
+			showError(`Memory region ${argv.name} not found.`);
 			await cgsnClose(cgsn, port);
 			return;
 		}
@@ -84,8 +84,8 @@ export async function readAllMemory(argv) {
 		try {
 			fs.mkdirSync(argv.output, true);
 		} catch (e) {
-			console.error(e.message);
-			console.error(`Output dir not found: ${argv.output}`);
+			showError(e.message);
+			showError(`Output dir not found: ${argv.output}`);
 			return;
 		}
 	}
@@ -96,7 +96,7 @@ export async function readAllMemory(argv) {
 
 	let info = await getPhoneInfo(cgsn);
 	if (!info) {
-		console.error(`Can't get phone information!`);
+		showError(`Can't get phone information!`);
 		await cgsnClose(cgsn, port);
 		return;
 	}
@@ -135,7 +135,7 @@ export async function readAllMemory(argv) {
 		i++;
 
 		if (!result.success) {
-			console.error(`Error: ${result.error}`);
+			showError(`Error: ${result.error}`);
 			break;
 		}
 
@@ -158,7 +158,7 @@ export async function listAvailableMemory(argv) {
 
 	let info = await getPhoneInfo(cgsn);
 	if (!info) {
-		console.error(`Can't get phone information!`);
+		showError(`Can't get phone information!`);
 		await cgsnClose(cgsn, port);
 		return;
 	}
@@ -293,7 +293,7 @@ async function getPhoneInfo(cgsn) {
 			descr:	'External RAM.',
 		});
 	} else {
-		console.error(`Detected unknown phone! Memory regions maybe incorret.`);
+		showError(`Detected unknown phone! Memory regions maybe incorret.`);
 		memoryRegions.push({
 			name:	"RAM",
 			addr:	0xA8000000,
@@ -316,7 +316,7 @@ async function cgsnConnect(portName, limitBaudrate) {
 		console.info(`Connected using ${port.baudRate} baudrate.`);
 		return [cgsn, port];
 	} else {
-		console.error('Phone not found or CGSN patch is not installed.');
+		showError('Phone not found or CGSN patch is not installed.');
 		await cgsnClose(cgsn, port);
 		return [null, null];
 	}
@@ -358,4 +358,8 @@ function formatSize(size) {
 	} else {
 		return +(size / 1024).toFixed(2) + " kB";
 	}
+}
+
+function showError(message) {
+	console.error(chalk.red(message))
 }

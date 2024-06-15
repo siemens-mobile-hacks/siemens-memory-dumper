@@ -1,8 +1,8 @@
 {
 	"name": "@sie-js/siemens-memory-dumper",
 	"version": "1.0.3",
-	"type": "module",
 	"main": "./bin/siemens-memory-dumper.js",
+	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"link-local-deps": "npm link -S ../node-sie-serial/",

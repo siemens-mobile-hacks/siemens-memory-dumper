@@ -1,0 +1,10 @@
+{
+	"pkg": {
+		"targets": [
+			"latest-win-x64"
+		],
+		"assets": [
+			"./node_modules/@serialport/bindings-cpp/prebuilds"
+		]
+	}
+}
