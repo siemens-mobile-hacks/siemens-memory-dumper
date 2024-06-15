@@ -1,4 +1,4 @@
-[![NPM Version](https://img.shields.io/npm/v/%40sie-js%2Fserial)](https://www.npmjs.com/package/@sie-js/memory-dump)
+[![NPM Version](https://img.shields.io/npm/v/%40sie-js%2Fsiemens-memory-dumper)](https://www.npmjs.com/package/@sie-js/siemens-memory-dumper)
 
 # SUMMARY
 Console utility for memory dump of Siemens phones.
