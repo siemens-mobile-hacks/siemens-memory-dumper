@@ -7,15 +7,49 @@ import { SerialPort } from "serialport";
 import { sprintf } from "sprintf-js";
 
 export async function readMemoryToFile(argv) {
-	let addr = parseAddr(argv.addr);
-	let size = parseSize(argv.size);
+	let addr = argv.addr != null ? parseAddr(argv.addr) : 0;
+	let size = argv.size != null ? parseSize(argv.size) : 0;
+	let name;
+	let outputFile;
 	let baudrate = parseInt(argv.baudrate, 10);
-
-	fs.writeFileSync(argv.output, "");
 
 	let [cgsn, port] = await cgsnConnect(argv.port, baudrate);
 	if (!cgsn)
 		return;
+
+	let info = await getPhoneInfo(cgsn);
+	if (!info) {
+		console.error(`Can't get phone information!`);
+		await cgsnClose(cgsn, port);
+		return;
+	}
+
+	if (argv.name) {
+		let region = getMemoryRegionByName(info.memoryRegions, argv.name);
+		if (!region) {
+			console.error(`Memory region ${argv.name} not found.`);
+			await cgsnClose(cgsn, port);
+			return;
+		}
+		addr = region.addr;
+		size = region.size;
+		name = region.name;
+	} else {
+		let region = getMemoryRegionByAddrAndSize(info.memoryRegions, size);
+		if (region)
+			name = region.name;
+	}
+
+	let genericName = `${info.phoneModel}v${info.phoneSwVersion}${name ? '-' + name : ''}-${sprintf("%08X_%08X", addr, size)}.bin`;
+	if (!argv.output) {
+		outputFile = `./${genericName}`;
+	} else if (fs.existsSync(argv.output) && fs.lstatSync(argv.output).isDirectory()) {
+		outputFile = `${argv.output}/${genericName}`;
+	} else  {
+		outputFile = argv.output;
+	}
+
+	fs.writeFileSync(outputFile, "");
 
 	console.log(sprintf("Reading memory %08X ... %08X (%s)", addr, addr + size - 1, formatSize(size)));
 	console.log();
@@ -32,16 +66,19 @@ export async function readMemoryToFile(argv) {
 	});
 	pb.stop();
 
-	fs.writeFileSync(argv.output, result.buffer);
+	fs.writeFileSync(outputFile, result.buffer);
 
 	console.log();
-	console.log(`File saved to: ${argv.output}`);
+	console.log(`File saved to: ${outputFile}`);
 
 	await cgsnClose(cgsn, port);
 }
 
 export async function readAllMemory(argv) {
 	let baudrate = parseInt(argv.baudrate, 10);
+
+	if (!argv.output)
+		argv.output = ".";
 
 	if (!fs.existsSync(argv.output)) {
 		try {
@@ -141,6 +178,22 @@ export async function listAvailableMemory(argv) {
 	console.log(asciiTable(table));
 
 	await cgsnClose(cgsn, port);
+}
+
+function getMemoryRegionByName(regions, name) {
+	for (let r of regions) {
+		if (r.name.toLowerCase() == name.toLowerCase())
+			return r;
+	}
+	return null;
+}
+
+function getMemoryRegionByAddrAndSize(regions, addr, size) {
+	for (let r of regions) {
+		if (r.addr == addr && r.size == size)
+			return r;
+	}
+	return null;
 }
 
 async function getPhoneInfo(cgsn) {

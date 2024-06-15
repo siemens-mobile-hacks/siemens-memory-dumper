@@ -43,21 +43,22 @@ Works on all OS: Linux, OSX, Windows
 
 # USAGE
 ```
-$ siemens-memory-dumper -h
-Usage: memory-dumper [options] [command]
+Usage: siemens-memory-dumper [options] [command]
 
 CLI memory dumper for Siemens phones.
 
 Options:
-  -p, --port <port>          serial port name (default: "/dev/ttyUSB0")
-  -b, --baudrate <baudrate>  limit maximum baudrate (0 - use maximum) (default: "0")
-  -h, --help                 display help for command
+  -p, --port <port>              serial port name (default: "/dev/ttyUSB0")
+  -b, --baudrate <baudrate>      limit maximum baudrate (0 - use maximum) (default: "0")
+  -h, --help                     display help for command
 
 Commands:
-  read [options]             Read memory from phone to file.
-  read-all [options]         Read all available memory regions from phone to dir.
-  list                       List available memory regions for dump.
-  help [command]             display help for command
+  read <addr> <size> [file|dir]  Read memory region by address and size and save to file.
+  read-region <name> [file|dir]  Read memory region by name and save to file.
+  read-all [dir]                 Read all available memory regions from phone and save to dir.
+  list                           List available memory regions for dump.
+  help [command]                 display help for command
+
 ```
 
 ### List all available memory regions
@@ -84,12 +85,12 @@ Detected phone SIEMENS C81v51
 ╚══════════╧════════════╧════════════════════╧════════════════════════════════════════════════════╝
 ```
 
-### Dump all memory regions
+### Dump all available memory regions
 ```bash
-siemens-memory-dumper -p PORT read-all -o OUTPUT_DIR
+siemens-memory-dumper -p PORT read-all
 ```
 ```
-$ siemens-memory-dumper -p /dev/ttyUSB0 read-all -o /tmp/C81
+$ siemens-memory-dumper -p /dev/ttyUSB0 read-all /tmp/C81
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
 Detected phone SIEMENS C81v51
@@ -115,18 +116,36 @@ File saved to: /tmp/C81/C81v51-RAM-A8000000_01000000.bin
 File saved to: /tmp/C81/C81v51-VMALLOC1-AC000000_00E00000.bin
 ```
 
-### Dump any custom memory region
+### Dump memory region by name
 ```bash
-siemens-memory-dumper -p PORT read -a 0xA0000000 -s 128k -o bootcore.bin
-siemens-memory-dumper -p PORT read -a 0xA0000000 -s 0x20000 -o bootcore.bin
+siemens-memory-dumper -p PORT read-region SRAM
+siemens-memory-dumper -p PORT read-region SRAM ./SRAM.bin
 ```
 ```
-$ siemens-memory-dumper -p /dev/ttyUSB0 read -a 0xA0000000 -s 128k -o bootcore.bin
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
+Detected phone SIEMENS C81v51
+Reading memory 00080000 ... 00097FFF (96 kB)
+
+ [========================================] 100% | ETA: 0s | 39.3 kB/s
+
+File saved to: ./C81v51-SRAM-00080000_00018000.bin
+```
+
+### Dump any custom memory region by address and size
+```bash
+siemens-memory-dumper -p PORT read 0xA0000000 128k
+siemens-memory-dumper -p PORT read 0xA0000000 128k ./bootcore.bin
+siemens-memory-dumper -p PORT read 0xA0000000 0x20000 ./bootcore.bin
+```
+```
+$ siemens-memory-dumper -p /dev/ttyUSB0 read 0xA0000000 128k
+Connecting to phone using port /dev/ttyUSB0...
+Connected using 921600 baudrate.
+Detected phone SIEMENS C81v51
 Reading memory A0000000 ... A001FFFF (128 kB)
 
- [========================================] 100% | ETA: 0s | 67.37 kB/s
+ [========================================] 100% | ETA: 0s | 67.23 kB/s
 
-File saved to: bootcore.bin
+File saved to: ./C81v51-A0000000_00020000.bin
 ```
