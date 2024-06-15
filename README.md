@@ -17,20 +17,20 @@ Works on all OS: Linux, OSX, Windows
 		3. Install npm: `npm install npm -g` (PowerShell)
  	- OSX: `brew install node@20`
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
-3. Install memory dumper (optional):
+3. Install `siemens-memory-dumper`:
 	```bash
- 	npm install -g @sie-js/memory-dumper
+ 	npm install -g @sie-js/siemens-memory-dumper
  	```
 
-	As option, use can use memory-dumper without installation.
+	Alternatively, yoy can use a `siemens-memory-dumper` without installation:
 	```bash
-	# Just replace "siemens-memory-dumper" to "npx @sie-js/memory-dumper"
-	npx @sie-js/memory-dumper -p /dev/ttyUSB0 list
+	# Just replace "siemens-memory-dumper" to "npx @sie-js/siemens-memory-dumper"
+	npx @sie-js/siemens-memory-dumper -p /dev/ttyUSB0 list
 	```
 
 # UPGRADE
 ```bash
-npm install -g @sie-js/memory-dumper@latest
+npm update -g @sie-js/siemens-memory-dumper
 ```
 
 # USAGE
@@ -38,7 +38,7 @@ npm install -g @sie-js/memory-dumper@latest
 > You can achieve maximum speed using a DCA-540 or DCA-510 data cables. Bluetooth is also possible, but has the worst speed.
 
 ```
-$ npx @sie-js/memory-dumper -h
+$ siemens-memory-dumper -h
 Usage: memory-dumper [options] [command]
 
 CLI memory dumper for Siemens phones.
@@ -57,10 +57,10 @@ Commands:
 
 ### List all available memory regions
 ```bash
-npx @sie-js/memory-dumper -p PORT list
+siemens-memory-dumper -p PORT list
 ```
 ```
-$ npx @sie-js/memory-dumper -p /dev/ttyUSB0 list
+$ siemens-memory-dumper -p /dev/ttyUSB0 list
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
 Detected phone SIEMENS C81v51
@@ -81,10 +81,10 @@ Detected phone SIEMENS C81v51
 
 ### Dump all memory regions
 ```bash
-npx @sie-js/memory-dumper -p PORT read-all -o OUTPUT_DIR
+siemens-memory-dumper -p PORT read-all -o OUTPUT_DIR
 ```
 ```
-$ npx @sie-js/memory-dumper -p /dev/ttyUSB0 read-all -o /tmp/C81
+$ siemens-memory-dumper -p /dev/ttyUSB0 read-all -o /tmp/C81
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
 Detected phone SIEMENS C81v51
@@ -112,11 +112,11 @@ File saved to: /tmp/C81/C81v51-VMALLOC1-AC000000_00E00000.bin
 
 ### Dump any custom memory region
 ```bash
-npx @sie-js/memory-dumper -p PORT read -a 0xA0000000 -s 128k -o bootcore.bin
-npx @sie-js/memory-dumper -p PORT read -a 0xA0000000 -s 0x20000 -o bootcore.bin
+siemens-memory-dumper -p PORT read -a 0xA0000000 -s 128k -o bootcore.bin
+siemens-memory-dumper -p PORT read -a 0xA0000000 -s 0x20000 -o bootcore.bin
 ```
 ```
-$ npx @sie-js/memory-dumper -p /dev/ttyUSB0 read -a 0xA0000000 -s 128k -o bootcore.bin
+$ siemens-memory-dumper -p /dev/ttyUSB0 read -a 0xA0000000 -s 128k -o bootcore.bin
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
 Reading memory A0000000 ... A001FFFF (128 kB)
