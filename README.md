@@ -82,6 +82,7 @@ Detected phone SIEMENS C81v51
 ### Dump all available memory regions
 ```bash
 siemens-memory-dumper -p PORT read-all
+siemens-memory-dumper -p PORT read-all OUTPUT_DIR
 ```
 ```
 $ siemens-memory-dumper -p /dev/ttyUSB0 read-all /tmp/C81
