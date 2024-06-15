@@ -22,7 +22,7 @@ Works on all OS: Linux, OSX, Windows
  	npm install -g @sie-js/siemens-memory-dumper
  	```
 
-	Alternatively, yoy can use a `siemens-memory-dumper` without installation:
+	Alternatively, you can use a `siemens-memory-dumper` without installation:
 	```bash
 	# Just replace "siemens-memory-dumper" to "npx @sie-js/siemens-memory-dumper"
 	npx @sie-js/siemens-memory-dumper -p /dev/ttyUSB0 list
