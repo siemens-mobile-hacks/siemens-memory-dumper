@@ -6,7 +6,8 @@ Console utility for memory dump of Siemens phones.
 Works on all OS: Linux, OSX, Windows
 
 # INSTALL
-1. Install the latest version of [NodeJS](https://nodejs.org/en/download/).
+1. Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
+2. Install the latest version of [NodeJS](https://nodejs.org/en/download/).
 	- Windows: [download nodejs.msi](https://nodejs.org/en/download/prebuilt-installer)
    		
 		1. Install .msi package with checked `[x] Automatically install the necessary tools`.
@@ -16,7 +17,6 @@ Works on all OS: Linux, OSX, Windows
 		3. Install npm: `npm install npm -g` (PowerShell)
  	- OSX: `brew install node@20`
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
-2. Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
 3. Install memory dumper:
 	```bash
  	npm install -g @sie-js/memory-dumper
