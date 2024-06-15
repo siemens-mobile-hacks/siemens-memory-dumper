@@ -8,26 +8,13 @@ Works on all OS: Linux, OSX, Windows
 [Read more about memory dumping.](https://siemens-mobile-hacks.github.io/reverse-engineering/memory-dump.html)
 
 # INSTALL
-1. Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
-2. Install the latest version of [NodeJS](https://nodejs.org/en/download/).
-	- Windows: [download nodejs.msi](https://nodejs.org/en/download/prebuilt-installer)
-   		
-		1. Install .msi package with checked `[x] Automatically install the necessary tools`.
-		
-		2. Restart/relogin is required after installation.
+First you need to install the [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
 
-		3. Install npm: `npm install npm -g` (PowerShell)
-   
-  		5. Allow running .ps scripts: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` (PowerShell)
- 	- OSX: `brew install node@20`
-  	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
-3. Install `siemens-memory-dumper`:
+**Linux & OSX**
+1. Install the latest version of [NodeJS](https://nodejs.org/en/download/).
+2. Install `siemens-memory-dumper` package:
 	```bash
- 	# install
- 	npm install -g @sie-js/siemens-memory-dumper
-
- 	# upgrade if new version is released
- 	npm update -g @sie-js/siemens-memory-dumper
+ 	npm install -g @sie-js/siemens-memory-dumper@latest
  	```
 
 	Alternatively, you can use a `siemens-memory-dumper` without installation:
@@ -35,6 +22,12 @@ Works on all OS: Linux, OSX, Windows
 	# Just replace "siemens-memory-dumper" to "npx @sie-js/siemens-memory-dumper"
 	npx @sie-js/siemens-memory-dumper -p /dev/ttyUSB0 list
 	```
+
+**Windows**
+
+Download prebuilt `siemens-memory-dumper.exe` from [releases](https://github.com/siemens-mobile-hacks/siemens-memory-dumper/releases).
+
+Alternatively, you can [install nodejs on windows](https://nodejs.org/en/download/) and use instruction for OSX/Linux.
 
 # TIPS & TRICKS
 1. You can achieve maximum speed using a DCA-540 or DCA-510 data cables.
