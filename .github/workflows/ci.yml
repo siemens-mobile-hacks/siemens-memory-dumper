@@ -25,4 +25,4 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          files: siemens-memory-dumper.exe.zip
+          files: siemens-memory-dumper.exe
