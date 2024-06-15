@@ -5,6 +5,8 @@ Console utility for memory dump of Siemens phones.
 
 Works on all OS: Linux, OSX, Windows
 
+[Read more about memory dumping.](https://siemens-mobile-hacks.github.io/reverse-engineering/memory-dump.html)
+
 # INSTALL
 1. Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
 2. Install the latest version of [NodeJS](https://nodejs.org/en/download/).
@@ -34,8 +36,7 @@ npm update -g @sie-js/siemens-memory-dumper
 ```
 
 # USAGE
-> [!NOTE]
-> You can achieve maximum speed using a DCA-540 or DCA-510 data cables. Bluetooth is also possible, but has the worst speed.
+> 💡 You can achieve maximum speed using a DCA-540 or DCA-510 data cables. Bluetooth is also possible, but has the worst speed.
 
 ```
 $ siemens-memory-dumper -h
