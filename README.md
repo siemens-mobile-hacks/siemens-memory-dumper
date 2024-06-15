@@ -115,6 +115,7 @@ siemens-memory-dumper -p PORT read-region SRAM
 siemens-memory-dumper -p PORT read-region SRAM ./SRAM.bin
 ```
 ```
+$ siemens-memory-dumper -p /dev/ttyUSB0 read-region SRAM
 Connecting to phone using port /dev/ttyUSB0...
 Connected using 921600 baudrate.
 Detected phone SIEMENS C81v51
