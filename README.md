@@ -17,10 +17,21 @@ Works on all OS: Linux, OSX, Windows
 		3. Install npm: `npm install npm -g` (PowerShell)
  	- OSX: `brew install node@20`
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
-3. Install memory dumper:
+3. Install memory dumper (optional):
 	```bash
  	npm install -g @sie-js/memory-dumper
  	```
+
+	As option, use can use memory-dumper without installation.
+	```bash
+	# Just replace "siemens-memory-dumper" to "npx @sie-js/memory-dumper"
+	npx @sie-js/memory-dumper -p /dev/ttyUSB0 list
+	```
+
+# UPGRADE
+```bash
+npm install -g @sie-js/memory-dumper@latest
+```
 
 # USAGE
 > [!NOTE]
