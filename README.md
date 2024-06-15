@@ -7,7 +7,11 @@ Works on all OS: Linux, OSX, Windows
 
 # INSTALL
 - Install the latest version of [NodeJS](https://nodejs.org/en/download/).
-	- Windows: [download nodejs.msi](https://nodejs.org/en/download/prebuilt-installer) (install with `[x] Automatically install the necessary tools`)
+	- Windows: [download nodejs.msi](https://nodejs.org/en/download/prebuilt-installer)
+   		
+		Install .msi package with checked `[x] Automatically install the necessary tools`.
+		
+		Also, restart is required after installation.
  	- OSX: `brew install node@20`
   	- Linux: [use package manager](https://nodejs.org/en/download/package-manager/all)
 - Install a [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
