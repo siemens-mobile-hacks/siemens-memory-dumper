@@ -1,6 +1,6 @@
 {
 	"name": "@sie-js/siemens-memory-dumper",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"main": "./bin/siemens-memory-dumper.js",
 	"type": "module",
 	"scripts": {
