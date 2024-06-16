@@ -7,6 +7,8 @@ Works on all OS: Linux, OSX, Windows
 
 [Read more about memory dumping.](https://siemens-mobile-hacks.github.io/reverse-engineering/memory-dump.html)
 
+[In-browser memory dumper version.](https://siemens-mobile-hacks.github.io/web-tools/dumper/)
+
 # INSTALL
 First you need to install the [CGSN patch](https://siemens-mobile-hacks.github.io/reverse-engineering/arm-debugger.html) to the phone.
 
