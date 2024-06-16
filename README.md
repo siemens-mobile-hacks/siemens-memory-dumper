@@ -20,7 +20,11 @@ First you need to install the [CGSN patch](https://siemens-mobile-hacks.github.i
 	Alternatively, you can use a `siemens-memory-dumper` without installation:
 	```bash
 	# Just replace "siemens-memory-dumper" to "npx @sie-js/siemens-memory-dumper"
-	npx @sie-js/siemens-memory-dumper -p /dev/ttyUSB0 list
+	npx @sie-js/siemens-memory-dumper list
+
+    # Or use inside cloned repo
+    git clone https://github.com/siemens-mobile-hacks/siemens-memory-dumper && cd siemens-memory-dumper && npm i
+    node bin/siemens-memory-dumper.js list
 	```
 
 **Windows**
