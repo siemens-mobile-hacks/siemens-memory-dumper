@@ -223,7 +223,7 @@ async function getPhoneInfo(cgsn) {
 	response = await atc.sendCommand("AT+CGMR");
 	if (!response.success)
 		return null;
-	phoneSwVersion = response.lines[0];
+	phoneSwVersion = response.lines[0].match(/^\s*(\d+)/)[0];
 
 	console.log(`Detected phone ${phoneVendor} ${phoneModel}v${phoneSwVersion}`);
 
