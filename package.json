@@ -17,7 +17,11 @@
 	"repository": {
 		"url": "git+https://github.com/siemens-mobile-hacks/siemens-memory-dumper.git"
 	},
+	"overrides": {
+		"@serialport/bindings-cpp": "npm:@sie-js/node-serialport-bindings-cpp@1.0.1"
+	},
 	"dependencies": {
+		"@sie-js/node-serialport-bindings-cpp": "^1.0.1",
 		"@sie-js/serial": "^0.0.15",
 		"chalk": "^5.3.0",
 		"cli-progress": "^3.12.0",
