@@ -1,6 +1,10 @@
 [![NPM Version](https://img.shields.io/npm/v/%40sie-js%2Fsiemens-memory-dumper)](https://www.npmjs.com/package/@sie-js/siemens-memory-dumper)
 
 # SUMMARY
+
+> [!CAUTION]
+> This tool deprecated, please use https://github.com/siemens-mobile-hacks/sie-tool
+
 Console utility for reading RAM memory inside Siemens phones (SGold/SGold2 platform).
 
 Works on all OS: Linux, OSX, Windows
